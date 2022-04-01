@@ -2,19 +2,24 @@ import { getCompetitors, updateCompetitorBirthday } from "./functions";
 
 
 const formatedDate = (date: string) => {
-    const dateDefault = "0000-00-00 00:00:00";
+    const dateDefault = "2022-01-01 00:00:00";
+    if (date.length > 1) {
+        if (date.includes("E")) {
+            return dateDefault;
+        }
+        if (!(date.includes("-"))) {
+            const parts = date.split(" ");
+            // console.log(parts);
 
-    if (!(date.includes("-"))) {
-        const parts = date.split(" ");
-        // console.log(parts);
-
-        const dateParts = parts[0].split("/");
-        // console.log(dateParts);
-        return `${dateParts[2]}-${dateParts[1]}-${dateParts[0]} 00:00:00`;
-    }
-    if (date.includes("E+")) {
+            const dateParts = parts[0].split("/");
+            // console.log(dateParts);
+            let format = `${dateParts[2]}-${dateParts[1]}-${dateParts[0]}`;
+            return format.trim() + " 00:00:00";
+        }
+    } else {
         return dateDefault;
     }
+
     return null;
 }
 
@@ -31,7 +36,7 @@ const formatedDate = (date: string) => {
 
 
         console.log("Done Operation");
-        
+
     } catch (error) {
         console.log(error);
 
