@@ -42,3 +42,4 @@ const formatedDate = (date: string) => {
 
     }
 })()
+// SELECT count(*) FROM `cfasccjp_competitors` WHERE competitor_birthday = "2022-01-01 00:00:00";
